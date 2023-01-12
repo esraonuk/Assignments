@@ -23,14 +23,14 @@ GROUP BY customer_id;
 
 -- 4. Find the total amount of each order. Your solution should include order id and total amount sorted from highest to lowest.
 
-SELECT order_id, sum(list_price  * discount) AS total_amount
+SELECT order_id, sum(list_price  * (1 - discount)) AS total_amount
 FROM sale.order_item
 GROUP BY order_id
 ORDER BY total_amount DESC;
 
 -- 5. Find the order id that has the maximum average product price. Your solution should include only one row with the order id and average product price.
 
-SELECT TOP 1 order_id, AVG(list_price  * discount) AS average_price
+SELECT TOP 1 order_id, AVG(list_price  * (1 - discount)) AS average_price
 FROM sale.order_item
 GROUP BY order_id
 ORDER BY average_price DESC;
